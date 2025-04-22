@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrez le mot de passe</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2em; }
+    #qr { display: none; margin-top: 2em; }
+  </style>
+</head>
+<body>
+  <h1>🔒 Entrez le mot de passe</h1>
+  <input type="password" id="password" placeholder="Mot de passe"/>
+  <button onclick="checkPassword()">Valider</button>
+  <p id="error" style="color: red;"></p>
+  <div id="qr">
+    <p>✔️ Correct ! Voici ton QR code :</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=indice.html&size=200x200" alt="QR Code vers la page d'indice">
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("password").value.toLowerCase();
+      if (input === "rouge") {
+        document.getElementById("qr").style.display = "block";
+        document.getElementById("error").innerText = "";
+      } else {
+        document.getElementById("error").innerText = "Mot de passe incorrect.";
+      }
+    }
+  </script>
+</body>
+</html>
