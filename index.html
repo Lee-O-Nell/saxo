@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Entrez le mot de passe</title>
+  <p>Je suis la combinaison de tes enfants.</p>
+  <p>Je suis ton mot de passe habituel</p>
   <style>
     body { font-family: sans-serif; text-align: center; padding: 2em; }
     #qr { display: none; margin-top: 2em; }
@@ -11,18 +13,18 @@
 </head>
 <body>
   <h1>🔒 Entrez le mot de passe</h1>
-  <input type="password" id="password" placeholder="Mot de passe"/>
+  <input type="text" id="password" placeholder="Mot de passe"/>
   <button onclick="checkPassword()">Valider</button>
   <p id="error" style="color: red;"></p>
   <div id="qr">
     <p>✔️ Correct ! Voici ton QR code :</p>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://lee-o-nell.github.io/saxo/indice&size=200x200" alt="QR Code vers la page d'indice">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=indice.html&size=200x200" alt="QR Code vers la page d'indice">
   </div>
 
   <script>
     function checkPassword() {
       const input = document.getElementById("password").value.toLowerCase();
-      if (input === "rouge") {
+      if (input.includes("lifloma")) {
         document.getElementById("qr").style.display = "block";
         document.getElementById("error").innerText = "";
       } else {
