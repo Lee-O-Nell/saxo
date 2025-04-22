@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indice</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2em; }
+    #message-final { display: none; font-weight: bold; font-size: 1.5em; color: green; }
+  </style>
+</head>
+<body>
+  <h1>⏳ Page indisponible pour l'instant</h1>
+  <p>Attendre <span id="timer"></span> pour pouvoir y voir l’indice.</p>
+  <p id="message-final">🎉 Prépare tes valises pour cet après-midi ! On part en weekend ! 🎉</p>
+
+  <script>
+    const targetDate = new Date("2025-05-09T06:00:00Z"); // 8h heure Bruxelles = 6h UTC
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").style.display = "none";
+        document.querySelector("h1").innerText = "🎁 L'indice est disponible !";
+        document.getElementById("message-final").style.display = "block";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("timer").textContent =
+        `${days}j ${hours}h ${minutes}m ${seconds}s`;
+
+      setTimeout(updateCountdown, 1000);
+    }
+
+    updateCountdown();
+  </script>
+</body>
+</html>
