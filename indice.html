@@ -11,7 +11,7 @@
 </head>
 <body>
   <h1>⏳ Page indisponible pour l'instant</h1>
-  <p>Attendre <span id="timer"></span> pour pouvoir y voir l’indice.</p>
+  <p id="wait">Attendre <span id="timer"></span> pour pouvoir y voir l’indice.</p>
   <p id="message-final">🎉 Prépare tes valises pour 17h00 ! On part en weekend dans les environs ! 🎉</p>
 
   <script>
@@ -23,8 +23,10 @@
 
       if (diff <= 0) {
         document.getElementById("timer").style.display = "none";
+        document.getElementById("wait").style.display = "none";
         document.querySelector("h1").innerText = "🎁 L'indice est disponible !";
         document.getElementById("message-final").style.display = "block";
+        
         return;
       }
 
